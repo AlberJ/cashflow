@@ -24,4 +24,7 @@ public class UsuarioDAO extends GenericDAO<Usuario, Integer> {
 		}
 		return u;
 	}
+	
+	
+	
 }

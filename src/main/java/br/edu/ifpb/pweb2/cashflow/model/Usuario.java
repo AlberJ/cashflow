@@ -29,17 +29,10 @@ public class Usuario
 	@OneToMany(mappedBy="usuario", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Movimentacao> movimentacoes;
 	
-	public Usuario(String email, String login, String senha) {
-		this.email = email;
-		this.login = login;
-		this.senha = senha;
-		this.saldo = 0.0;
-		this.movimentacoes = new ArrayList<Movimentacao>();
-	}
-	
-	public Usuario(int id, String email, String senha) {
+	public Usuario(int id, String email, String Login, String senha) {
 		this.id_usuario = id;
 		this.email = email;
+		this.login = login;
 		this.senha = senha;
 		this.saldo = 0.0;
 		this.movimentacoes = new ArrayList<Movimentacao>();
@@ -63,6 +56,14 @@ public class Usuario
 
 	public String getEmail() {
 		return email;
+	}
+
+	public void setLoginl(String l) {
+		this.login = l;
+	}
+	
+	public String getLogin() {
+		return login;
 	}
 
 	public void setEmail(String email) {

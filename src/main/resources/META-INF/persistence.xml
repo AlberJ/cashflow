@@ -36,7 +36,8 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 		    <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/cashflow" />
 		    <property name="javax.persistence.jdbc.user" value="postgres" />
-		    <property name="javax.persistence.jdbc.password" value="ifpb" />
+		    <!-- <property name="javax.persistence.jdbc.password" value="ifpb" /> -->
+		    <property name="javax.persistence.jdbc.password" value="123" />
 		    
 		    <property name="eclipselink.ddl-generation" value="create-tables" /> 
 		    <property name="eclipselink.ddl-generation.output-mode" value="database"/>

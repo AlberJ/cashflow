@@ -16,7 +16,7 @@
 			<div class="alert alert-danger">$_msg</div>
 		</c:if>
 		
-		<form class="form-signin" action="${pageContext.request.contextPath}/Login/Logon" method="post">
+		<form class="form-signin" action="${pageContext.request.contextPath}/controller.do?op=login" method="post">
 			<label for="inputEmail" class="sr-only">Usuario</label>
 			<input type="text" name="login" id="login" class="form-control" placeholder="O seu username para login" required autofocus
 			   value="${cookie['loginCookie].value}" /><br/><br/>
