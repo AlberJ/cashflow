@@ -17,6 +17,7 @@ public class UsuarioController {
 	
 	public UsuarioController(EntityManager em) {
 		this.entityManager = em;
+//		System.out.println("Instânciou a classe UsuarioController."); //ATÉ AQUI ESTÁ OK!
 	}
 	
 	public Resultado cadastre(Map<String, String[]> parametros
@@ -27,11 +28,12 @@ public class UsuarioController {
 //				(EntityManagerFactory) request.getServletContext().getAttribute("emf");
 		Usuario usuario = null;
 		if((usuario = fromParametros(parametros)) != null){
-			UsuarioDAO dao = new UsuarioDAO(entityManager);
-			dao.beginTransaction();
+			UsuarioDAO dao = new UsuarioDAO(entityManager);			
+			dao.beginTransaction(); //ATÉ AQUI ESTÁ OK!
 			dao.insert(usuario);
-			System.out.println("Usuario: "+usuario);
+			System.out.println("Usuario depois da persistencia: "+usuario);
 			dao.commit();
+			System.out.println("Depois do commit.");
 //			resultado.setErro(false); //FALTA IMPLEMENTAR O setErro()
 			String m = "Usuario salvo com sucesso!";
 //			resultado.addMensagem(m); // FALTA IMPLEMENTAR O addMensagem()
@@ -45,12 +47,12 @@ public class UsuarioController {
 		
 	}
 	
-	private Usuario fromParametros(Map<String, String[]>parametros)
+	private Usuario fromParametros(Map<String, String[]>parametros) //ATÉ AQUI ESTÁ OK!
 	{
 		String[] email = parametros.get("email");
 		String[] login = parametros.get("login");
-		String[] senha = parametros.get("senha");
-	
+		String[] senha = parametros.get("password");
+		
 		Usuario u = new Usuario();
 		
 		if (email == null || email.length == 0 || email[0].isEmpty()) {

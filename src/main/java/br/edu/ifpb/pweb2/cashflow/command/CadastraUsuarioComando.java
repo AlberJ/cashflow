@@ -25,7 +25,7 @@ public class CadastraUsuarioComando implements ICommand {
 		request.getServletContext().getAttribute("emf");
 		EntityManager em = emf.createEntityManager();
 		UsuarioController usuarioCtrl =  new UsuarioController(em);
-		
+//		System.out.println("Criou o usuario controller.");	//ATÉ AQUI ESTÁ OK!
 //		UsuarioController usuarioCtrl = 
 //				new UsuarioController(PersistenceUtil.getCurrentEntityManager());
 		
@@ -35,7 +35,9 @@ public class CadastraUsuarioComando implements ICommand {
 		
 //		MANDA APENAS O REQUEST POIS O USUARIO ERA O USUARIO DA SESSÃO PARA CADASTRAR O CONTATO A ELE
 		Resultado resultado = usuarioCtrl.cadastre(request.getParameterMap());
+		System.out.println("Resultado: "+resultado);
 		if (!resultado.isErro()) {
+			System.out.println("Entrou em Não Erro de Resultado");
 			resultado.setProximaPagina(paginaSucesso);
 			resultado.setRedirect(true);
 		} else {

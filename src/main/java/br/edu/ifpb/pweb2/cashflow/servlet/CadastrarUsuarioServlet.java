@@ -20,8 +20,10 @@ public class CadastrarUsuarioServlet extends HttpServlet {
 		String senha = request.getParameter("senha");
 		
 		// Cria um objeto do modelo
-		Usuario usuario = new Usuario(email, login, senha);
-		
+		Usuario usuario = new Usuario();
+		usuario.setEmail(email);
+		usuario.setLoginl(login);
+		usuario.setSenha(senha);
 			
 		
 		// Insere o contato no banco de dados
