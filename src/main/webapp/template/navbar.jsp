@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<!-- 	style="margin-top: 0; margin-bottom: 20px; position: fixed;"> -->
 	<div class="container">
@@ -24,11 +25,10 @@
 						</span>
 					</a></li>
 
-					<li class="nav-item active">
-					<a class="nav-link" 
-						href="${pageContext.request.contextPath}/controller.do?op=cadmov"> <img
-							src="../template/imagens/open-iconic-master/png/plus-2x.png"> Adicionar
-							Movimentação
+					<li class="nav-item active"><a class="nav-link"
+						href="${pageContext.request.contextPath}/controller.do?op=cadmov">
+							<img src="../template/imagens/open-iconic-master/png/plus-2x.png">
+							Adicionar Movimentação
 					</a></li>
 				</ul>
 			</div>
@@ -37,7 +37,8 @@
 		<div class="nav justify-content-end">
 			<div class="navbar-brand" style="margin: 0 30px">
 				<span class="glyphicon glyphicon-th-list"> <img
-					src="../template/imagens/money.png" style="width: 26px; height: 26px;"> <span
+					src="../template/imagens/money.png"
+					style="width: 26px; height: 26px;"> <span
 					class="text-secondary"> R$: </span>0.0
 				</span>
 			</div>
@@ -48,17 +49,15 @@
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"><img
 						src="../template/imagens/open-iconic-master/png/person-2x.png">
-						<span class="text-dark"> Usuario
-						</span></a>
-						
+						<span class="text-dark"> Usuario </span></a>
+
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item"
-						href=""> <img
-							src="../template/imagens/open-iconic-master/png/cog-2x.png"> Editar conta
+						<a class="dropdown-item" href=""> <img
+							src="../template/imagens/open-iconic-master/png/cog-2x.png">
+							Editar conta
 						</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" 
-						href=""> <img
+						<a class="dropdown-item" href="#" id="logout"> <img
 							src="../template/imagens/open-iconic-master/png/account-logout-2x.png">
 							Sair
 						</a>
@@ -69,3 +68,7 @@
 	</div>
 </nav>
 
+<form id="logout"
+	action="${pageContext.request.contextPath}/controller.do?op=cadusu" method="POST">
+	<input type="hidden">
+</form>
