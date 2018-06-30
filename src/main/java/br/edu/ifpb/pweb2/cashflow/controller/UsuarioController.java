@@ -17,11 +17,9 @@ public class UsuarioController {
 	
 	public UsuarioController(EntityManager em) {
 		this.entityManager = em;
-//		System.out.println("Instânciou a classe UsuarioController."); //ATÉ AQUI ESTÁ OK!
 	}
 	
-	public Resultado cadastre(Map<String, String[]> parametros
-											/*request.getParameterMap()*/) {
+	public Resultado cadastre(Map<String, String[]> parametros) {
 		Resultado resultado = new Resultado();
 		
 //		EntityManagerFactory emf = 
@@ -30,24 +28,24 @@ public class UsuarioController {
 		if((usuario = fromParametros(parametros)) != null){
 			UsuarioDAO dao = new UsuarioDAO(entityManager);			
 			dao.beginTransaction(); //ATÉ AQUI ESTÁ OK!
+			System.out.println("Antes do INSERT no UsuarioControll");
 			dao.insert(usuario);
-			System.out.println("Usuario depois da persistencia: "+usuario);
+			System.out.println("Usuario depois da persistencia no UsuarioControll: "+usuario);
 			dao.commit();
 			System.out.println("Depois do commit.");
-//			resultado.setErro(false); //FALTA IMPLEMENTAR O setErro()
+			resultado.setErro(false); 
 			String m = "Usuario salvo com sucesso!";
-//			resultado.addMensagem(m); // FALTA IMPLEMENTAR O addMensagem()
+			resultado.addMensagens(m);
 		}else{
-//			FATA IMPLEMENTAR ESTES DOIS METODOS
-//			resultado.setErro(true);
-//			resultado.setMensagens(this.mensagensErro);
+			resultado.setErro(true);
+			resultado.setMensagens(this.mensagensErro);
 		}
 		System.out.println("Resultado: "+resultado);	
 		return resultado;
 		
 	}
 	
-	private Usuario fromParametros(Map<String, String[]>parametros) //ATÉ AQUI ESTÁ OK!
+	private Usuario fromParametros(Map<String, String[]>parametros) 
 	{
 		String[] email = parametros.get("email");
 		String[] login = parametros.get("login");
@@ -76,4 +74,15 @@ public class UsuarioController {
 		return u;
 	}
 
+	public Resultado setUsuarioSessao(Usuario u)
+	{
+		Resultado resultado = new Resultado();
+		
+		if (u != null){
+			
+		}
+		
+		return resultado;
+	}
+	
 }

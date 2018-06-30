@@ -2,9 +2,9 @@
 	<!-- 	style="margin-top: 0; margin-bottom: 20px; position: fixed;"> -->
 	<div class="container">
 		<div class="nav">
-			<a class="navbar-brand" href="<c:url value='/home.jsp'/>"><span
+			<a class="navbar-brand" href="<c:url value=''/>"><span
 				class="glyphicon glyphicon-home"></span> <img
-				src="img/open-iconic-master/png/home-3x.png">
+				src="../template/imagens/open-iconic-master/png/home-3x.png">
 				Home</a>
 			<!-- COMPACTA AS OPÇÕES PARA TELAS PEQUENAS -->
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -17,9 +17,9 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active"><a class="nav-link"
-						href="<c:url value='/home.jsp'/>"> <span
+						href="<c:url value=''/>"> <span
 							class="glyphicon glyphicon-th-list"> <img
-								src="img/open-iconic-master/png/list-2x.png">
+								src="../template/imagens/open-iconic-master/png/list-2x.png">
 								Movimentações
 						</span>
 					</a></li>
@@ -27,7 +27,7 @@
 					<li class="nav-item active">
 					<a class="nav-link" 
 						href="${pageContext.request.contextPath}/controller.do?op=cadmov"> <img
-							src="img/open-iconic-master/png/plus-2x.png"> Adicionar
+							src="../template/imagens/open-iconic-master/png/plus-2x.png"> Adicionar
 							Movimentação
 					</a></li>
 				</ul>
@@ -37,8 +37,8 @@
 		<div class="nav justify-content-end">
 			<div class="navbar-brand" style="margin: 0 30px">
 				<span class="glyphicon glyphicon-th-list"> <img
-					src="img/money.png" style="width: 26px; height: 26px;"> <span
-					class="text-secondary"> R$: </span>0.0 <!-- usuario.saldo -->
+					src="../template/imagens/money.png" style="width: 26px; height: 26px;"> <span
+					class="text-secondary"> R$: </span>0.0
 				</span>
 			</div>
 
@@ -47,20 +47,19 @@
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"><img
-						src="img/open-iconic-master/png/person-2x.png">
-						<span class="text-dark"> 						
-						<!-- ${usuario.name } -->Usuario
+						src="../template/imagens/open-iconic-master/png/person-2x.png">
+						<span class="text-dark"> Usuario
 						</span></a>
 						
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item"
-						href="${pageContext.request.contextPath}/controller.do?op=edtusu"> <img
-							src="img/open-iconic-master/png/cog-2x.png"> Editar conta
+						href=""> <img
+							src="../template/imagens/open-iconic-master/png/cog-2x.png"> Editar conta
 						</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" 
-						href="${pageContext.request.contextPath}/controller.do?op=logout"> <img
-							src="img/open-iconic-master/png/account-logout-2x.png">
+						href=""> <img
+							src="../template/imagens/open-iconic-master/png/account-logout-2x.png">
 							Sair
 						</a>
 					</div></li>

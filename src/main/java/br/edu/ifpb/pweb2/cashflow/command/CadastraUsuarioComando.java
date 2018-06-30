@@ -18,20 +18,11 @@ public class CadastraUsuarioComando implements ICommand {
 		final String paginaSucesso = "controller.do?op=conusu";
 		final String paginaErro = "usuario/cadastro.jsp";
 		
-		System.out.println("Chegou no CadastroUsuarioComando, dentro do metodo execute.");
-		
 		// Recupera a fábrica de entitymanagers e produz uma EM para o controller
 		EntityManagerFactory emf = (EntityManagerFactory)
 		request.getServletContext().getAttribute("emf");
 		EntityManager em = emf.createEntityManager();
 		UsuarioController usuarioCtrl =  new UsuarioController(em);
-//		System.out.println("Criou o usuario controller.");	//ATÉ AQUI ESTÁ OK!
-//		UsuarioController usuarioCtrl = 
-//				new UsuarioController(PersistenceUtil.getCurrentEntityManager());
-		
-//		HttpSession session = request.getSession();
-//		Usuario usuario = (Usuario) session.getAttribute("email"); //ESSA LINHA "EQUIVALE" A DE PEGAR A SESSÃO PARA CADASTRAR O CONTATO AO USUARIO LOGADO
-//		System.out.println("Usuario em cadastro de usuario: "+email);
 		
 //		MANDA APENAS O REQUEST POIS O USUARIO ERA O USUARIO DA SESSÃO PARA CADASTRAR O CONTATO A ELE
 		Resultado resultado = usuarioCtrl.cadastre(request.getParameterMap());
