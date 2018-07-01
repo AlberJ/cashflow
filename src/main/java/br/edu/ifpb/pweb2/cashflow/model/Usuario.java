@@ -58,7 +58,7 @@ public class Usuario
 		return email;
 	}
 
-	public void setLoginl(String l) {
+	public void setLogin(String l) {
 		this.login = l;
 	}
 	

@@ -49,5 +49,4 @@ public class UsuarioDAO extends GenericDAO<Usuario, Integer> {
 		q.setParameter("user", usuario);
 		return q.getResultList();
 	}
-	
 }
