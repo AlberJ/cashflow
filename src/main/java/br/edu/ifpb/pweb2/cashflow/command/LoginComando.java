@@ -15,8 +15,8 @@ import br.edu.ifpb.pweb2.cashflow.model.Usuario;
 
 public class LoginComando implements ICommand {
 	@Override
-	public Resultado execute(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Entrou em LoginComando."); // OK
+	public Resultado execute(HttpServletRequest request, HttpServletResponse response) 
+	{
 		final String paginaSucesso = "usuario/lista.jsp"; // "controller.do?op=conusu";
 		final String paginaErro = "login/login.jsp";
 		HttpSession session = request.getSession();
@@ -31,7 +31,6 @@ public class LoginComando implements ICommand {
 		LoginController loginCtrl = new LoginController(em);
 		Resultado resultado = loginCtrl.isValido(request.getParameterMap());
 		Usuario usuarioLogado = (Usuario) resultado.getModel();
-		System.out.println("Pegou o usuario logado: " + usuarioLogado.toString());
 
 		if (resultado.isErro()) {
 			request.setAttribute("msgs", resultado.getMensagens());

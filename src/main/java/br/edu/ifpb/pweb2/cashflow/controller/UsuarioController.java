@@ -21,42 +21,20 @@ public class UsuarioController {
 	public Resultado cadastre(Map<String, String[]> parametros ) {
 		Resultado resultado = new Resultado();
 		Usuario usuario = null;
-//		String email = null;
 		
-		if ((usuario = fromParametros(parametros)) != null) {
+		if ((usuario = fromParametros(parametros)) != null) 
+		{
 			UsuarioDAO dao = new UsuarioDAO(entityManager);
 			dao.beginTransaction();
-			
-			System.out.println("Antes do INSERT no UsuarioController!");
 			dao.insert(usuario);
-			
-			System.out.println("Usuario depois da persistencia no UsuarioController: " +usuario);
 			dao.commit();
-			System.out.println("Depois do commit.");
-			resultado.setErro(false);
-			String m = "Usuario salvo com sucesso!";
-			resultado.addMensagens(m);
-			
-//			UsuarioDAO udao = new UsuarioDAO(entityManager);
-//			usuario = udao.findByEmail(usuario.getEmail());
-			
-//			usuario.setEmail(email);
-			
-//			if (usuario.getEmail() == null) {
-//				dao.insert(usuario);
-//			} else {
-//				dao.update(usuario);
-//			}
-//				dao.commit();
-//				resultado.setErro(false);
-//				String msg = "Usuario salvo com sucesso";
-//				resultado.addMensagens(msg);
+			resultado.setErro(false);	
 		} else {
-//			resultado.setModel(usuario);
+			resultado.setModel(usuario); 
 			resultado.setErro(true);
 			resultado.setMensagens(this.mensagensErro);
 		}
-		System.out.println("Resultado: " +resultado);
+
 		return resultado;
 	}
 
@@ -79,24 +57,24 @@ public class UsuarioController {
 		Usuario usuario = new Usuario();
 		this.mensagensErro = new ArrayList<String>();
 
-		if (email == null || email.length == 0 || email[0].isEmpty()) {
+		if (email == null || email.length == 0 || email[0].isEmpty() || email.equals("")) {
 			this.mensagensErro.add("Email é campo obrigatório!");
 		} else {
 			usuario.setEmail(email[0]);
 		}
 
-		if (login == null || login.length == 0 || login[0].isEmpty()) {
+		if (login == null || login.length == 0 || login[0].isEmpty() || login.equals("")) {
 			this.mensagensErro.add("Login é campo obrigatório!");
 		} else {
 			usuario.setLogin(login[0]);
 		}
 
-		if (senha == null || senha.length == 0 || senha[0].isEmpty()) {
+		if (senha == null || senha.length == 0 || senha[0].isEmpty() || senha.equals("")) {
 			this.mensagensErro.add("Senha é campo obrigatório!");
 		} else {
 			usuario.setSenha(senha[0]);
 		}
-
+		
 		return this.mensagensErro.isEmpty() ? usuario : null;
 	}
 
