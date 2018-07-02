@@ -25,7 +25,7 @@
 					</a></li>
 
 					<li class="nav-item active"><a class="nav-link"
-						href="${pageContext.request.contextPath}/controller.do?op=cadmov">
+						href="${pageContext.request.contextPath}/movimentacao/cadastro.jsp">
 							<img
 							src="${pageContext.request.contextPath}/template/imagens/open-iconic-master/png/plus-2x.png">
 							Adicionar Movimentação
@@ -57,7 +57,7 @@
 							Editar dados
 						</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#" id="logout"> <img
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/controller.do?op=logout"> <img
 							src="${pageContext.request.contextPath}/template/imagens/open-iconic-master/png/account-logout-2x.png">
 							Sair
 						</a>
@@ -69,10 +69,4 @@
 	</div>
 </nav>
 
-<form id=logout
-	action="${pageContext.request.contextPath}/controller.do?op=logout"
-	method="post">
-	<input type="hidden">
-	<!-- <button type="submit" class="btn btn-primary">Sair</button> -->
-</form>
 

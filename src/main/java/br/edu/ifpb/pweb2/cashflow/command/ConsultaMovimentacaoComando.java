@@ -10,6 +10,7 @@ import br.edu.ifpb.pweb2.cashflow.controller.MovimentacaoController;
 import br.edu.ifpb.pweb2.cashflow.controller.Resultado;
 import br.edu.ifpb.pweb2.cashflow.dao.PersistenceUtil;
 import br.edu.ifpb.pweb2.cashflow.model.Movimentacao;
+import br.edu.ifpb.pweb2.cashflow.model.Usuario;
 
 public class ConsultaMovimentacaoComando implements ICommand {
 
@@ -21,9 +22,13 @@ public class ConsultaMovimentacaoComando implements ICommand {
 		Movimentacao movimentacao = (Movimentacao) session.getAttribute("movimentacao");
 		List<Movimentacao> movimentacoes = movimentacaoCtrl.consulte(movimentacao);
 		
+		Usuario u = (Usuario) session.getAttribute("usuario");
+		u.setMovimentacoes(movimentacaoCtrl.getMovimentacoes(u));
+		
 		Resultado resultado = new Resultado();
+		request.setAttribute("usuario", u);
 		request.setAttribute("movimentacao", movimentacoes);
-		resultado.setProximaPagina("movimentacao/movimentacoes.jsp");
+		resultado.setProximaPagina("movimentacao/lista.jsp");
 		return resultado;
 	}
 

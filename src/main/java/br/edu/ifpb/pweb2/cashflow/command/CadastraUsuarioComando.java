@@ -14,7 +14,7 @@ public class CadastraUsuarioComando implements ICommand {
 
 	@Override
 	public Resultado execute(HttpServletRequest request, HttpServletResponse response) {
-		final String paginaSucesso = "usuario/lista.jsp"; //"controller.do?op=login";
+		final String paginaSucesso = "usuario/home.jsp"; //"controller.do?op=login";
 		final String paginaErro = "usuario/cadastro.jsp";
 		HttpSession session = request.getSession();
 		

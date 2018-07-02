@@ -8,7 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 
 import br.edu.ifpb.pweb2.cashflow.dao.MovimentacaoDAO;
+import br.edu.ifpb.pweb2.cashflow.dao.UsuarioDAO;
 import br.edu.ifpb.pweb2.cashflow.model.Movimentacao;
+import br.edu.ifpb.pweb2.cashflow.model.Usuario;
 
 public class MovimentacaoController {
 	private List<String> mensagensErro;
@@ -17,20 +19,25 @@ public class MovimentacaoController {
 	public MovimentacaoController(EntityManager em) {
 		this.entityManager = em;
 	}
-	public Resultado cadastre(Map<String, String[]> parametros ) {
+	
+	public Resultado cadastre(Usuario usuario, Map<String, String[]> parametros ) {
 		Resultado resultado = new Resultado();
 		Movimentacao movimentacao = null;
-		
+				
 		if ((movimentacao = fromParametros(parametros)) != null) {
+			UsuarioDAO udao = new UsuarioDAO(entityManager);
 			MovimentacaoDAO dao = new MovimentacaoDAO(entityManager);
 			dao.beginTransaction();
+			usuario = udao.findByLogin(usuario.getLogin());
 			
-			System.out.println("Antes do INSERT no MovimentacaoController!");
-			dao.insert(movimentacao);
+			movimentacao.setUsuario(usuario);
+			if(movimentacao.getId() == null){
+				dao.insert(movimentacao);
+			}else{
+				dao.update(movimentacao);
+			}
 			
-			System.out.println("Movimentacao depois da persistencia no MovimentacaoController: " +movimentacao);
 			dao.commit();
-			System.out.println("Depois do commit.");
 			resultado.setErro(false);
 			String m = "Movimentacao salvo com sucesso!";
 			resultado.addMensagens(m);
@@ -38,38 +45,40 @@ public class MovimentacaoController {
 			resultado.setErro(true);
 			resultado.setMensagens(this.mensagensErro);
 		}
-		System.out.println("Resultado: " +resultado);
 		return resultado;
 	}
 	
-	private Movimentacao fromParametros(Map<String, String[]> parametros) {
+	private Movimentacao fromParametros(Map<String, String[]> parametros) { // ATÉ AKI RODA OK
 		String[] descricao = parametros.get("descricao");
 		String[] valor = parametros.get("valor");
 		String[] operacao = parametros.get("operacao");
-		
+				
 		Movimentacao movimentacao = new Movimentacao();
 		this.mensagensErro = new ArrayList<String>();
 
 		if (descricao == null || descricao.length == 0 || descricao[0].isEmpty()) {
-			this.mensagensErro.add("Descricao � um campo obrigat�rio!");
+			this.mensagensErro.add("Descricao é um campo obrigatório!");
 		} else {
 			movimentacao.setDescricao(descricao[0]);
 		}
 
 		if (valor == null || valor.length == 0 || valor[0].isEmpty()) {
-			this.mensagensErro.add("Valor � um campo obrigat�rio!");
+			this.mensagensErro.add("Valor é um campo obrigatório!");
 		} else {
 			movimentacao.setValor(Double.parseDouble(valor[0]));
 		}
 
 		if (operacao == null || operacao.length == 0 || operacao[0].isEmpty()) {
-			this.mensagensErro.add("Operacao � um campo obrigat�rio!");
+			this.mensagensErro.add("Operacao é um campo obrigatório!");
 		} else {
-			if(operacao[0]=="true") {
+			if(operacao[0].equals("en")) {
 				movimentacao.setOperacao(true);
-			}else {movimentacao.setOperacao(false);}
+			}else if (operacao[0].equals("sa")) {
+				movimentacao.setOperacao(false);
+			}else{
+				this.mensagensErro.add("Erro. Por favor, recarregue a página.");
+			}
 		}
-
 		return this.mensagensErro.isEmpty() ? movimentacao : null;
 	}
 	
@@ -86,6 +95,12 @@ public class MovimentacaoController {
 		return movimentacao;
 	}
 
+	public List<Movimentacao> getMovimentacoes(Usuario u) {
+		MovimentacaoDAO dao = new MovimentacaoDAO(entityManager);
+		List<Movimentacao> lista = dao.getMovimentacoes(u);
+		return lista;
+	}
+	
 	public Resultado exclua(Map<String, String[]> parameterMap) {
 		String ids[] = parameterMap.get("delids");
 		MovimentacaoDAO dao = new MovimentacaoDAO(entityManager);

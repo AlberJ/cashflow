@@ -87,7 +87,7 @@ public class Usuario
 	}
 	
 	public void adicionarMovimentacao(Movimentacao m) {
-		m.opera(this);
+		m.opera();
 		this.movimentacoes.add(m);
 	}
 	

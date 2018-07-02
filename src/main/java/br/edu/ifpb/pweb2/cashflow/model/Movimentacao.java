@@ -15,7 +15,7 @@ public class Movimentacao
 	@Id
 	@Column(name="ID_MOVIMENTACAO")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_movimentacao;
+	private Integer id_movimentacao;
 	
 	private String descricao;
 	private double valor;
@@ -35,7 +35,7 @@ public class Movimentacao
 	}
 	
 //	PARA QUANDO VIER DO BANCO DE DADOS
-	public Movimentacao(int id, Usuario usuario, String descricao, double valor, boolean tipo) {
+	public Movimentacao(Integer id, Usuario usuario, String descricao, double valor, boolean tipo) {
 		this.id_movimentacao = id;
 		this.usuario = usuario;
 		this.descricao = descricao;
@@ -43,12 +43,17 @@ public class Movimentacao
 		this.operacao = tipo;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return this.id_movimentacao;
 	}
 	
-	public Usuario getIdUsuario() {
+	public Usuario getUsuario() {
 		return this.usuario;
+	}
+	
+	public void setUsuario(Usuario u) {
+		this.usuario = u;
+		opera();
 	}
 
 	public String getDescricao() {
@@ -75,12 +80,11 @@ public class Movimentacao
 		this.operacao = tipo;
 	}
 
-	public void opera(Usuario u) {
+	public void opera() {
 		if(this.operacao) { // ENTRADA
-			u.setSaldo(u.getSaldo() + this.valor);
-			
+			this.usuario.setSaldo(this.usuario.getSaldo() + this.valor);		
 		} else { // SAIDA
-			u.setSaldo(u.getSaldo() - this.valor);
+			this.usuario.setSaldo(this.usuario.getSaldo() - this.valor);
 		}
 	}
 	

@@ -57,5 +57,5 @@ public class Resultado {
 	public boolean isRedirect() {
 		return redirect;
 	}
-
+	
 }
