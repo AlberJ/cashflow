@@ -29,6 +29,7 @@ public class LoginComando implements ICommand {
 		
 //		LoginController loginCtrl = new LoginController(PersistenceUtil.getCurrentEntityManager());
 		LoginController loginCtrl = new LoginController(em);
+		
 		Resultado resultado = loginCtrl.isValido(request.getParameterMap());
 		Usuario usuarioLogado = (Usuario) resultado.getModel();
 

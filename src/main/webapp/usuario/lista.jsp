@@ -13,23 +13,23 @@
 
 </head>
 <body>
-	
+
 	<div class="container">
 
-		<%-- <c:if test="${not empty _msg}">
-				<c:forEach var="_m" items="${_msg}">
-					<div class="alert alert-danger">${_m}</div>
-				</c:forEach>
-			</c:if> --%>
+		
 
 		<h1>Lista de Usuários</h1>
 
+		<h3>${usuario.login }</h3>
+		Email: ${usuario.email }, Saldo: ${usuario.saldo }
+
+		<p>
 		<form
 			action="${pageContext.request.contextPath}/controller.do?op=logout"
 			method="post">
 			<button type="submit" class="btn btn-primary">Sair</button>
 		</form>
- 
+		</p>
 	</div>
 	<%@ include file="../template/footer.html"%>
 </body>

@@ -13,7 +13,6 @@ public class LoginController
 	
 	public LoginController(EntityManager entityManager) {
 		this.entityManager = entityManager;
-		System.out.println("Carregou LoginController."); 
 	}
 	
 	public Resultado isValido(Map<String, String[]> parametros) {
@@ -23,8 +22,7 @@ public class LoginController
 		String login = parametros.get("login")[0];
 		String senha = parametros.get("senha")[0];
 		System.out.println("Carregou os parâmetros em isValido. login: "+login+", senha: "+senha); 
-		
-		
+			
 		UsuarioDAO udao = new UsuarioDAO(entityManager);
 		Usuario user = udao.findByLogin(login);
 		if (user != null) {

@@ -24,16 +24,18 @@ public class UsuarioController {
 		
 		if ((usuario = fromParametros(parametros)) != null) 
 		{
+			usuario.setSaldo(0.0);
 			UsuarioDAO dao = new UsuarioDAO(entityManager);
 			dao.beginTransaction();
 			dao.insert(usuario);
 			dao.commit();
 			resultado.setErro(false);	
-		} else {
-			resultado.setModel(usuario); 
+		} else { 
 			resultado.setErro(true);
 			resultado.setMensagens(this.mensagensErro);
 		}
+
+		resultado.setModel(usuario); 
 
 		return resultado;
 	}
