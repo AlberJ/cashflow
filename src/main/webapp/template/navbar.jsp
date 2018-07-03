@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container">
 		<div class="nav">
-			<a class="navbar-brand" href="<c:url value=''/>"><span
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/controller.do?op=conmov"><span
 				class="glyphicon glyphicon-home"></span> <img
 				src="${pageContext.request.contextPath}/template/imagens/open-iconic-master/png/home-3x.png">
 				Home</a>
@@ -17,7 +17,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active"><a class="nav-link"
-						href="<c:url value=''/>"> <span
+						href="${pageContext.request.contextPath}/controller.do?op=conmov"> <span
 							class="glyphicon glyphicon-th-list"> <img
 								src="${pageContext.request.contextPath}/template/imagens/open-iconic-master/png/list-2x.png">
 								Movimentações

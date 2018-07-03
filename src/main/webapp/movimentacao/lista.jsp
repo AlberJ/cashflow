@@ -15,7 +15,7 @@
 <body>
 	<c:import url="../template/navbar.jsp" />
 
-	<div class="container-fluid">
+	<div class="container">
 		<h4 style="text-align: center; margin: 20px 0;">Movimentações</h4>
 
 		<table class="table table-striped">
@@ -24,6 +24,8 @@
 					<th scope="col">#</th>
 					<th scope="col">Descrição</th>
 					<th scope="col">Valor (R$)</th>
+					<th scope="col" >Editar</th>
+					<th scope="col" >Excluir</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,7 +34,14 @@
 						<th scope="row"></th>
 						<td>${mov.descricao}</td>
 						<td>${mov.valor}</td>
-
+<td scope="col" ><a href="${pageContext.request.contextPath}/controller.do?op=edtmov">
+									<img
+							src="${pageContext.request.contextPath}/template/imagens/open-iconic-master/png/pencil-2x.png">
+					</a></td>
+<td scope="col"><a href="${pageContext.request.contextPath}/controller.do?op=delmov">
+									<img
+							src="${pageContext.request.contextPath}/template/imagens/open-iconic-master/png/trash-2x.png">
+					</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

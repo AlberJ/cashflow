@@ -15,6 +15,7 @@
 </head>
 <body>
 	<c:import url="../template/navbar.jsp" />
+	
 	<div class="container">
 		<div class="formulario">
 			<h1>Movimentação</h1>
