@@ -17,7 +17,7 @@ public class LoginComando implements ICommand {
 	@Override
 	public Resultado execute(HttpServletRequest request, HttpServletResponse response) 
 	{
-		final String paginaSucesso = "usuario/home.jsp"; // "controller.do?op=conusu";
+		final String paginaSucesso = "controller.do?op=conmov"; // "controller.do?op=conusu";
 		final String paginaErro = "login/login.jsp";
 		HttpSession session = request.getSession();
 

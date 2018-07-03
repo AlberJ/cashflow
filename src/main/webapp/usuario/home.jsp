@@ -15,15 +15,9 @@
 <body>
 	<c:import url="../template/navbar.jsp" />
 
-	<div class="container-fluid">
-		<h4 style="text-align: center; margin: 20px 0;">Movimentações</h4>
+	<%-- <c:import url="../movimentacao/lista.jsp" /> --%>
 
-		<c:import url="../movimentacao/lista.jsp" />
-
-
-
-
-	</div>
+	
 	<c:import url="../template/footer.html" />
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

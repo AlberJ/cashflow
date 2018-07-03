@@ -82,10 +82,12 @@ public class MovimentacaoController {
 		return this.mensagensErro.isEmpty() ? movimentacao : null;
 	}
 	
-	public List<Movimentacao> consulte(Movimentacao movimentacao) {
+	public List<Movimentacao> consulte(Usuario usuario) {
+		System.out.println("Chegou em consulte");
 		MovimentacaoDAO dao = new MovimentacaoDAO(entityManager);
-		List<Movimentacao> movimentacaos = dao.findAllFromMovimentacao(movimentacao);
-		return movimentacaos;
+		List<Movimentacao> movimentacoes = dao.findAllFromUser(usuario);
+		System.out.println("Pegou as movimentacoes no controller.");
+		return movimentacoes;
 	}
 
 	public Movimentacao busque(Map<String, String[]> parameterMap) {

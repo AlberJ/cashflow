@@ -22,8 +22,9 @@ public class MovimentacaoDAO extends GenericDAO<Movimentacao, Integer> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Usuario> findAllFromUser(Usuario usuario) {
-		Query q = this.getEntityManager().createQuery("from Usuario u where u.usuario = :user");
+	public List<Movimentacao> findAllFromUser(Usuario usuario) {
+		Query q = this.getEntityManager().createQuery(
+				"from Movimentacao m where m.usuario = :user");
 		q.setParameter("user", usuario);
 		return q.getResultList();
 	}

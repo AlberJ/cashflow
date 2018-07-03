@@ -15,8 +15,8 @@ public class CadastraMovimentacaoComando implements ICommand {
 
 	@Override
 	public Resultado execute(HttpServletRequest request, HttpServletResponse response) {
-		final String paginaSucesso = "usuario/home.jsp";
-		final String paginaErro = "controller.do?op=conmov";
+		final String paginaSucesso = "controller.do?op=conmov";
+		final String paginaErro = "movimentacao/cadastro.jsp";
 		
 		EntityManagerFactory emf = (EntityManagerFactory)
 		request.getServletContext().getAttribute("emf");

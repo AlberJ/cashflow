@@ -39,7 +39,7 @@
 				<span class="glyphicon glyphicon-th-list"> <img
 					src="${pageContext.request.contextPath}/template/imagens/money.png"
 					style="width: 26px; height: 26px;"> <span
-					class="text-secondary"> R$: </span> ${usuario.saldo }
+					class="text-secondary"> R$: </span> ${saldo }
 				</span>
 			</div>
 

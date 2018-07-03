@@ -23,7 +23,8 @@ public class ConsultaUsuarioComando implements ICommand {
 		
 		Resultado resultado = new Resultado();
 		request.setAttribute("usuarios", usuarios);
-		resultado.setProximaPagina("usuario/lista.jsp");
+//		resultado.setProximaPagina("usuario/lista.jsp");
+		resultado.setProximaPagina("usuario/home.jsp");
 		return resultado;
 	}
 }

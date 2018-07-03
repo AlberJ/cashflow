@@ -2,6 +2,8 @@ package br.edu.ifpb.pweb2.cashflow.command;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,18 +18,19 @@ public class ConsultaMovimentacaoComando implements ICommand {
 
 	@Override
 	public Resultado execute(HttpServletRequest request, HttpServletResponse response) {
-		MovimentacaoController movimentacaoCtrl = new MovimentacaoController(PersistenceUtil.getCurrentEntityManager());
-		
+		EntityManagerFactory emf = (EntityManagerFactory) request.getServletContext().getAttribute("emf");
+		EntityManager em = emf.createEntityManager();
+		// MovimentacaoController movimentacaoCtrl = new MovimentacaoController(PersistenceUtil.getCurrentEntityManager());
+		MovimentacaoController movimentacaoCtrl = new MovimentacaoController(em);
 		HttpSession session = request.getSession();
-		Movimentacao movimentacao = (Movimentacao) session.getAttribute("movimentacao");
-		List<Movimentacao> movimentacoes = movimentacaoCtrl.consulte(movimentacao);
-		
-		Usuario u = (Usuario) session.getAttribute("usuario");
-		u.setMovimentacoes(movimentacaoCtrl.getMovimentacoes(u));
-		
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		List<Movimentacao> movimentacoes = movimentacaoCtrl.consulte(usuario);
+
 		Resultado resultado = new Resultado();
-		request.setAttribute("usuario", u);
-		request.setAttribute("movimentacao", movimentacoes);
+		request.setAttribute("movimentacoes", movimentacoes);
+		request.setAttribute("saldo", usuario.getSaldo());
+
+//		resultado.setProximaPagina("usuario/home.jsp");
 		resultado.setProximaPagina("movimentacao/lista.jsp");
 		return resultado;
 	}
